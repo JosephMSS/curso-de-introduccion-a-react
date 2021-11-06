@@ -6,7 +6,7 @@ import { TodoList } from "../components/TodoList";
 import { TodoItem } from "../components/TodoItem";
 import { CreateTodoButton } from "../components/CreateTodoButton";
 function ListTodo() {
-  const todos = [
+  const todoList = [
     {
       id: 1,
       text: "Cortar Cebolla",
@@ -25,12 +25,16 @@ function ListTodo() {
   ];
   return (
     <div className="mx-6">
-      <Title title="TODO List" />
+      <Title title="Todo List" />
       <CreateTodoButton label="Add task" />
+      <TodoSearch 
+      id="searchInput"
+      label="Search"
+      placeholder="Search to do..." 
+      />
       <TodoCounter />
-      <TodoSearch />
       <TodoList>
-        {todos.map((todo) => (
+        {todoList.map((todo) => (
           <TodoItem text={todo.text} key={todo.id} />
         ))}
       </TodoList>
