@@ -24,21 +24,17 @@ function ListTodo() {
     },
   ];
   return (
-    <div className="mx-6">
+    <>
       <Title title="Todo List" />
       <CreateTodoButton label="Add task" />
-      <TodoSearch 
-      id="searchInput"
-      label="Search"
-      placeholder="Search to do..." 
-      />
+      <TodoSearch id="searchInput" placeholder="Search to do..." />
       <TodoCounter />
       <TodoList>
         {todoList.map((todo) => (
           <TodoItem text={todo.text} key={todo.id} />
         ))}
       </TodoList>
-    </div>
+    </>
   );
 }
 
