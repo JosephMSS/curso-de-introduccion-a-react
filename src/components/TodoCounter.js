@@ -7,7 +7,7 @@ function TodoCounter() {
      flex
      justify-center
      justify-self-auto
-     my-2
+     mb-4 mt-3
      text-primary
      xs:text-base
       font-poppins font-semibold

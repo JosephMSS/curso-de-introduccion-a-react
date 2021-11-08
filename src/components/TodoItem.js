@@ -1,20 +1,41 @@
 import React from "react";
 import { BiCheckCircle } from "react-icons/bi";
 import { AiOutlineEdit } from "react-icons/ai";
-import { AiOutlineDelete } from "react-icons/ai";
-function TodoItem(props) {
+import { TiDelete } from "react-icons/ti";
+function TodoItem({ text, completed }) {
   return (
     <>
-      <li className="grid  grid-cols-8 my-3 ">
-        <span className="my-auto mx-1 col-span-1">
-          <BiCheckCircle className="text-xl" />
+      <li
+        className={`
+        grid  grid-cols-8 my-3 
+        items-center
+        text-white font-poppins font-medium
+        h-14 rounded-lg
+        bg-gradient-to-r 
+        from-${completed ? "primary" : "secondary"} 
+        to-${completed ? "quaternary" : "tertiary"}
+        ${completed ? "opacity-70" : "opacity-100"}`}
+      >
+        <span className=" mx-2 col-span-1">
+          <BiCheckCircle 
+          className={`
+          text-2xl 
+          ${completed?"text-quaternary":"text-white"}`} />
         </span>
-        <p className="col-span-5 truncate mx-1">{props.text}</p>
-        <span className="mx-1">
-          <AiOutlineEdit className="text-xl" />
+        <p
+          className={`
+          col-span-5 truncate mx-1 
+          
+          ${completed ? "line-through" : "no-underline"}
+          `}
+        >
+          {text}
+        </p>
+        <span className="mx-auto">
+          <AiOutlineEdit className="text-2xl " />
         </span>
-        <span className="mx-1">
-          <AiOutlineDelete className="text-xl" />
+        <span className="">
+          <TiDelete className="text-2xl " />
         </span>
       </li>
     </>

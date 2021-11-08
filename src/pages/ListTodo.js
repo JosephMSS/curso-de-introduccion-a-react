@@ -10,7 +10,7 @@ function ListTodo() {
     {
       id: 1,
       text: "Cortar Cebolla",
-      completed: false,
+      completed: true,
     },
     {
       id: 2,
@@ -19,7 +19,12 @@ function ListTodo() {
     },
     {
       id: 3,
-      text: "Llorar con la llorona",
+      text: "Llorar con la cebolla",
+      completed: false,
+    },
+    {
+      id: 4,
+      text: "I told you long ago, on the road I got what they waitin' for",
       completed: false,
     },
   ];
@@ -31,7 +36,7 @@ function ListTodo() {
       <TodoCounter />
       <TodoList>
         {todoList.map((todo) => (
-          <TodoItem text={todo.text} key={todo.id} />
+          <TodoItem text={todo.text} key={todo.id} completed={todo.completed} />
         ))}
       </TodoList>
     </>
