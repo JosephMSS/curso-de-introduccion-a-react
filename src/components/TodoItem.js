@@ -3,6 +3,12 @@ import { BiCheckCircle } from "react-icons/bi";
 import { AiOutlineEdit } from "react-icons/ai";
 import { TiDelete } from "react-icons/ti";
 function TodoItem({ text, completed }) {
+  const onComplete = () => {
+    alert(`Se completo la tarea ${text}`)
+  };
+  const onDelete = () => {
+    alert(`Se elimino la tarea ${text}`)
+  };
   return (
     <>
       <li
@@ -16,16 +22,16 @@ function TodoItem({ text, completed }) {
         to-${completed ? "quaternary" : "tertiary"}
         ${completed ? "opacity-70" : "opacity-100"}`}
       >
-        <span className=" mx-2 col-span-1">
-          <BiCheckCircle 
-          className={`
+        <span className=" mx-2 col-span-1" onClick={onComplete}>
+          <BiCheckCircle
+            className={`
           text-2xl 
-          ${completed?"text-quaternary":"text-white"}`} />
+          ${completed ? "text-quaternary" : "text-white"}`}
+          />
         </span>
         <p
           className={`
           col-span-5 truncate mx-1 
-          
           ${completed ? "line-through" : "no-underline"}
           `}
         >
@@ -34,7 +40,9 @@ function TodoItem({ text, completed }) {
         <span className="mx-auto">
           <AiOutlineEdit className="text-2xl " />
         </span>
-        <span className="">
+        <span className=""
+        onClick={onDelete}
+        >
           <TiDelete className="text-2xl " />
         </span>
       </li>
