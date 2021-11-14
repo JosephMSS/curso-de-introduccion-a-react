@@ -1,19 +1,21 @@
-import React from "react";
+import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 function TodoSearch({ id, placeholder }) {
+  const [state, setState] = useState("");
   const onSearchValueChange = (e) => {
     const { value } = e.target;
     console.log(value);
+    setState(value)
   };
   return (
     <>
       <div className="flex flex-col relative ">
         <div
-          className="absolute inset-1
-        bg-gradient-to-r from-primary to-quaternary 
-        rounded-lg blur opacity-10 -ml-2 -mt-2
-        
-        "
+          className="
+          absolute inset-1
+          bg-gradient-to-r from-primary to-quaternary 
+          rounded-lg blur opacity-10 -ml-2 -mt-2        
+          "
         ></div>
         <div className="relative bg-white rounded-lg flex items-center align-middle border">
           <FaSearch className="  text-primary pl-2 h-5 w-8 flex-shrink" />
@@ -26,6 +28,7 @@ function TodoSearch({ id, placeholder }) {
           />
         </div>
       </div>
+      <p>{state}</p>
     </>
   );
 }
