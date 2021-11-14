@@ -1,9 +1,9 @@
 import React from "react";
-import { ListTodo } from "./pages/ListTodo";
+import { ListTodoUI } from "./pages/ListTodo/ListTodoUI";
 function App() {
   return (
     <>
-      <ListTodo />
+      <ListTodoUI />
     </>
   );
 }

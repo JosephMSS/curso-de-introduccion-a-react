@@ -2,13 +2,7 @@ import React from "react";
 import { BiCheckCircle } from "react-icons/bi";
 import { AiOutlineEdit } from "react-icons/ai";
 import { TiDelete } from "react-icons/ti";
-function TodoItem({ text, completed }) {
-  const onComplete = () => {
-    alert(`Se completo la tarea ${text}`)
-  };
-  const onDelete = () => {
-    alert(`Se elimino la tarea ${text}`)
-  };
+function TodoItem({ text, completed, onComplete, onDelete }) {
   return (
     <>
       <li
@@ -40,9 +34,7 @@ function TodoItem({ text, completed }) {
         <span className="mx-auto">
           <AiOutlineEdit className="text-2xl " />
         </span>
-        <span className=""
-        onClick={onDelete}
-        >
+        <span className="" onClick={onDelete}>
           <TiDelete className="text-2xl " />
         </span>
       </li>

@@ -1,11 +1,6 @@
 import { useState } from "react";
-import { Title } from "../components/Title";
-import { TodoCounter } from "../components/TodoCounter";
-import { TodoSearch } from "../components/TodoSearch";
-import { TodoList } from "../components/TodoList";
-import { TodoItem } from "../components/TodoItem";
-import { CreateTodoButton } from "../components/CreateTodoButton";
-function ListTodo() {
+import { ListTodo } from "./ListTodo";
+function ListTodoUI() {
   const todoListDefault = [
     {
       id: 1,
@@ -42,24 +37,37 @@ function ListTodo() {
       return todoText.includes(searchText);
     });
   }
+  const onComplete = (id) => {
+    const index = todoList.findIndex((todo) => todo.id === id);
+    if (index !== -1) {
+      const todo = todoList[index];
+      const newTodoList = [...todoList];
+      todo.completed = !todo.completed;
+      newTodoList[index] = todo;
+      setTodoList(newTodoList);
+    }
+  };
+  const onDelete = (id) => {
+    const index = todoList.findIndex((todo) => todo.id === id);
+    if (index !== -1) {
+      const newTodoList = [...todoList];
+      newTodoList.splice(index, 1);
+      setTodoList(newTodoList);
+    }
+  };
   return (
     <>
-      <Title title="Todo List" />
-      <CreateTodoButton label="Add task" />
-      <TodoSearch
-        id="searchInput"
-        placeholder="Search to do..."
+      <ListTodo
         searchValue={searchValue}
         setSearchValue={setSearchValue}
+        searchedTodos={searchedTodos}
+        todoCompleted={todoCompleted}
+        todoTotal={todoTotal}
+        onComplete={onComplete}
+        onDelete={onDelete}
       />
-      <TodoCounter todoCompleted={todoCompleted} todoTotal={todoTotal} />
-      <TodoList>
-        {searchedTodos.map((todo) => (
-          <TodoItem text={todo.text} key={todo.id} completed={todo.completed} />
-        ))}
-      </TodoList>
     </>
   );
 }
 
-export { ListTodo };
+export { ListTodoUI };
