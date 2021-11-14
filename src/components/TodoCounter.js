@@ -1,5 +1,5 @@
 import React from "react";
-function TodoCounter() {
+function TodoCounter({ todoTotal, todoCompleted }) {
   return (
     <>
       <h2
@@ -14,7 +14,7 @@ function TodoCounter() {
       sm:text-lg
       "
       >
-        Has completado 2 de 4 TODOS
+        Has completado {todoCompleted} de {todoTotal} TODOS
       </h2>
     </>
   );

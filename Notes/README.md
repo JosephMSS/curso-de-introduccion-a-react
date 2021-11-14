@@ -36,3 +36,12 @@ const [state,setState]=React.useState(true)
 ```
 
 > Estos datos se pueden declarar con cualquier nombre, lo importante es el orden `[0]`=valor del estado,`[1]`=la funcion para cambiar los datos del estado.
+
+## Contando y buscando TODOs
+
+### Render
+
+> Al actualizar el estado react re-redneriza los componentes para que la app reaccione a las interacciones de los usiarios
+> Debemos tener cuidado con las re-rederizaciones ya que puede que la app estalle
+> Para esta app lo que vamos a hacer es pasar por parametros las funciones `state` y `setState` desde el componente app
+>

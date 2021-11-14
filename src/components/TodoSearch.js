@@ -1,11 +1,9 @@
-import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
-function TodoSearch({ id, placeholder }) {
-  const [state, setState] = useState("");
+function TodoSearch({ id, placeholder, searchValue, setSearchValue }) {
   const onSearchValueChange = (e) => {
     const { value } = e.target;
     console.log(value);
-    setState(value)
+    setSearchValue(value);
   };
   return (
     <>
@@ -28,7 +26,6 @@ function TodoSearch({ id, placeholder }) {
           />
         </div>
       </div>
-      <p>{state}</p>
     </>
   );
 }
