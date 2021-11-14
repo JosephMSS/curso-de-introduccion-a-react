@@ -1,0 +1,6 @@
+{
+  "name": "React Sample",
+  "dockerComposeFile": "docker-compose.yml",
+  "workspaceFolder": "/usr/src/",
+  "service": "app"
+}
