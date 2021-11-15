@@ -1,45 +1,89 @@
-import { Title } from "../../components/Title";
-import { TodoCounter } from "../../components/TodoCounter";
-import { TodoSearch } from "../../components/TodoSearch";
-import { TodoList } from "../../components/TodoList";
-import { TodoItem } from "../../components/TodoItem";
-import { CreateTodoButton } from "../../components/CreateTodoButton";
-function ListTodo({
-  searchValue,
-  setSearchValue,
-  searchedTodos,
-  todoCompleted,
-  todoTotal,
-  onComplete,
-  onDelete,
-}) {
+import { useState } from "react";
+import { ListTodoUI } from "./ListTodoUI";
+const useLocalStorage = (itemName, initialValue) => {
+  const localStorageItem = localStorage.getItem(itemName);
+  let parsedItem;
+  if (!localStorageItem) {
+    localStorage.setItem(itemName, JSON.stringify(initialValue));
+    parsedItem = initialValue;
+  } else {
+    parsedItem = JSON.parse(localStorageItem);
+  }
+  const [item, setItem] = useState(parsedItem);
+  const saveItem = (newItem) => {
+    const stringifyItem = JSON.stringify(newItem);
+    localStorage.setItem(itemName, stringifyItem);
+    setItem(newItem);
+  };
+  return [item, saveItem];
+};
+
+function ListTodo() {
+  // const todoListDefault = [
+  //   {
+  //     id: 1,
+  //     text: "Cortar Cebolla",
+  //     completed: true,
+  //   },
+  //   {
+  //     id: 2,
+  //     text: "Tomar el curso de react",
+  //     completed: true,
+  //   },
+  //   {
+  //     id: 3,
+  //     text: "Llorar con la cebolla",
+  //     completed: false,
+  //   },
+  //   {
+  //     id: 4,
+  //     text: "I told you long ago, on the road I got what they waitin' for",
+  //     completed: false,
+  //   },
+  // ];
+  const [searchValue, setSearchValue] = useState("");
+  const [todoList, setTodoList] = useLocalStorage("TODO_V1", []);
+  const todoCompleted = todoList.filter((todo) => !!todo.completed).length;
+  const todoTotal = todoList.length;
+  let searchedTodos = [];
+  if (!searchValue.length >= 1) {
+    searchedTodos = todoList;
+  } else {
+    searchedTodos = todoList.filter((todo) => {
+      const todoText = todo.text.toLocaleLowerCase();
+      const searchText = searchValue.toLocaleLowerCase();
+      return todoText.includes(searchText);
+    });
+  }
+  const onComplete = (id) => {
+    const index = todoList.findIndex((todo) => todo.id === id);
+    if (index !== -1) {
+      const todo = todoList[index];
+      const newTodoList = [...todoList];
+      todo.completed = !todo.completed;
+      newTodoList[index] = todo;
+      setTodoList(newTodoList);
+    }
+  };
+  const onDelete = (id) => {
+    const index = todoList.findIndex((todo) => todo.id === id);
+    if (index !== -1) {
+      const newTodoList = [...todoList];
+      newTodoList.splice(index, 1);
+      setTodoList(newTodoList);
+    }
+  };
   return (
     <>
-      <Title title="Todo List" />
-      <CreateTodoButton label="Add task" />
-      <TodoSearch
-        id="searchInput"
-        placeholder="Search to do..."
+      <ListTodoUI
         searchValue={searchValue}
         setSearchValue={setSearchValue}
+        searchedTodos={searchedTodos}
+        todoCompleted={todoCompleted}
+        todoTotal={todoTotal}
+        onComplete={onComplete}
+        onDelete={onDelete}
       />
-      <TodoCounter todoCompleted={todoCompleted} todoTotal={todoTotal} />
-      <TodoList>
-        {searchedTodos.map((todo) => (
-          <TodoItem
-            text={todo.text}
-            id={todo.id}
-            key={todo.id}
-            completed={todo.completed}
-            onComplete={() => {
-              onComplete(todo.id);
-            }}
-            onDelete={() => {
-              onDelete(todo.id);
-            }}
-          />
-        ))}
-      </TodoList>
     </>
   );
 }
