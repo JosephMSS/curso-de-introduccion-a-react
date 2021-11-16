@@ -41,7 +41,14 @@ const [state,setState]=React.useState(true)
 
 ### Render
 
-> Al actualizar el estado react re-redneriza los componentes para que la app reaccione a las interacciones de los usiarios
+> Al actualizar el estado react re-renderiza los componentes para que la app reaccione a las interacciones de los usiarios
 > Debemos tener cuidado con las re-rederizaciones ya que puede que la app estalle
 > Para esta app lo que vamos a hacer es pasar por parametros las funciones `state` y `setState` desde el componente app
->
+
+### useEffect
+
+> Este se encarga de ejecutar un bloque de codigo una vez react finalize de realizar los calculos y justo antes de renderizar la aplicaion en el navegador.
+
+> En caso de que querramos cambiar este comportamiento useEffect contiene un segundo parametro tipo array `[]` el cual hace que el hook se ejecute si esta variable tiene algun cambio
+
+> Si enviamos esta variable como un array vacio el useEffect solamente se va ejecutar la primera vez que se renderise el componente.

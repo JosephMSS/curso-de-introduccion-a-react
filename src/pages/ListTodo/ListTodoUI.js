@@ -5,6 +5,8 @@ import { TodoList } from "../../components/TodoList";
 import { TodoItem } from "../../components/TodoItem";
 import { CreateTodoButton } from "../../components/CreateTodoButton";
 function ListTodoUI({
+  error,
+  loading,
   searchValue,
   setSearchValue,
   searchedTodos,
@@ -24,6 +26,15 @@ function ListTodoUI({
         setSearchValue={setSearchValue}
       />
       <TodoCounter todoCompleted={todoCompleted} todoTotal={todoTotal} />
+      {error && (
+        <p className="text-red-600">Error al cargar la informacion...</p>
+      )}
+      {loading && (
+        <p className="text-green-500">Estamos Cargando la informacion...</p>
+      )}
+      {!loading && !searchedTodos.length && (
+        <p className="text-green-500">Estamos Cargando la informacion...</p>
+      )}
       <TodoList>
         {searchedTodos.map((todo) => (
           <TodoItem
