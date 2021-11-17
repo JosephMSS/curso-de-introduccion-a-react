@@ -1,5 +1,7 @@
-import React from "react";
-function TodoCounter({ todoTotal, todoCompleted }) {
+import { useContext } from "react";
+import { TodoContext } from "../context/TodoContext";
+function TodoCounter() {
+  const { todoTotal, todoCompleted } = useContext(TodoContext);
   return (
     <>
       <h2

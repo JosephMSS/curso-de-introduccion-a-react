@@ -1,20 +1,13 @@
+import { useContext } from "react";
 import { Title } from "../../components/Title";
 import { TodoCounter } from "../../components/TodoCounter";
 import { TodoSearch } from "../../components/TodoSearch";
 import { TodoList } from "../../components/TodoList";
 import { TodoItem } from "../../components/TodoItem";
 import { CreateTodoButton } from "../../components/CreateTodoButton";
-function ListTodoUI({
-  error,
-  loading,
-  searchValue,
-  setSearchValue,
-  searchedTodos,
-  todoCompleted,
-  todoTotal,
-  onComplete,
-  onDelete,
-}) {
+import { TodoContext } from "../../context/TodoContext";
+function ListTodoUI() {
+  const { searchedTodos, error, loading, onComplete, onDelete } =useContext(TodoContext);
   return (
     <>
       <Title title="Todo List" />
@@ -22,12 +15,15 @@ function ListTodoUI({
       <TodoSearch
         id="searchInput"
         placeholder="Search to do..."
-        searchValue={searchValue}
-        setSearchValue={setSearchValue}
+        //searchValue={searchValue}
+        //setSearchValue={setSearchValue}
       />
-      <TodoCounter todoCompleted={todoCompleted} todoTotal={todoTotal} />
+      <TodoCounter
+      //todoCompleted={todoCompleted}
+      //todoTotal={todoTotal}
+      />
       {error && (
-        <p className="text-red-600">Error al cargar la informacion...</p>
+        <p className="text-red-600">{error.message}</p>
       )}
       {loading && (
         <p className="text-green-500">Estamos Cargando la informacion...</p>

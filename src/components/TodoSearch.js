@@ -1,8 +1,10 @@
 import { FaSearch } from "react-icons/fa";
-function TodoSearch({ id, placeholder, searchValue, setSearchValue }) {
+import { useContext } from "react";
+import { TodoContext } from "../context/TodoContext";
+function TodoSearch({ id, placeholder }) {
+  const { searchValue, setSearchValue } = useContext(TodoContext);
   const onSearchValueChange = (e) => {
     const { value } = e.target;
-    console.log(value);
     setSearchValue(value);
   };
   return (
