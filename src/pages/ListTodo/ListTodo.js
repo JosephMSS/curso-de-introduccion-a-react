@@ -3,26 +3,38 @@ import { ListTodoUI } from "./ListTodoUI";
 const useLocalStorage = (itemName, initialValue) => {
   const [item, setItem] = useState(initialValue);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
   useEffect(() => {
     setTimeout(() => {
-      const localStorageItem = localStorage.getItem(itemName);
-      let parsedItem;
-      if (!localStorageItem) {
-        localStorage.setItem(itemName, JSON.stringify(initialValue));
-        parsedItem = initialValue;
-      } else {
-        parsedItem = JSON.parse(localStorageItem);
+      try {
+        const localStorageItem = localStorage.getItem(itemName);
+        let parsedItem;
+        if (!localStorageItem) {
+          localStorage.setItem(itemName, JSON.stringify(initialValue));
+          parsedItem = initialValue;
+        } else {
+          parsedItem = JSON.parse(localStorageItem);
+        }
+        setItem(parsedItem);
+        setLoading(false);
+        throw new Error("Error al cargar los datos")
+      } catch (error) {
+        setError(error);
+        setLoading(false);
       }
-      setItem(parsedItem);
-      setLoading(false);
     }, 2000);
-  },[]);
+  }, []);
   const saveItem = (newItem) => {
-    const stringifyItem = JSON.stringify(newItem);
-    localStorage.setItem(itemName, stringifyItem);
-    setItem(newItem);
+    try {
+      const stringifyItem = JSON.stringify(newItem);
+      localStorage.setItem(itemName, stringifyItem);
+      setItem(newItem);
+    } catch (error) {
+      setError(error);
+      setLoading(false);
+    }
   };
-  return { item, saveItem, loading };
+  return { item, saveItem, loading, error };
 };
 
 function ListTodo() {
@@ -50,10 +62,11 @@ function ListTodo() {
   ];
   const [searchValue, setSearchValue] = useState("");
   const {
+    error,
     item: todoList,
     saveItem: setTodoList,
     loading,
-  } = useLocalStorage("TODO_V1",[]);
+  } = useLocalStorage("TODO_V1", []);
   const todoCompleted = todoList.filter((todo) => !!todo.completed).length;
   const todoTotal = todoList.length;
   let searchedTodos = [];
@@ -88,6 +101,7 @@ function ListTodo() {
     <>
       <ListTodoUI
         loading={loading}
+        error={error}
         searchValue={searchValue}
         setSearchValue={setSearchValue}
         searchedTodos={searchedTodos}

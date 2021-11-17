@@ -32,8 +32,8 @@ function ListTodoUI({
       {loading && (
         <p className="text-green-500">Estamos Cargando la informacion...</p>
       )}
-      {!loading && !searchedTodos.length && (
-        <p className="text-green-500">Estamos Cargando la informacion...</p>
+      {!loading && !searchedTodos.length && !error && (
+        <p className="text-green-500">Crea tu primer TODO</p>
       )}
       <TodoList>
         {searchedTodos.map((todo) => (
