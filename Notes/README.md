@@ -52,3 +52,39 @@ const [state,setState]=React.useState(true)
 > En caso de que querramos cambiar este comportamiento useEffect contiene un segundo parametro tipo array `[]` el cual hace que el hook se ejecute si esta variable tiene algun cambio
 
 > Si enviamos esta variable como un array vacio el useEffect solamente se va ejecutar la primera vez que se renderise el componente.
+
+### useContext
+
+> Context nos viene a ayudar cunado tenemos que pasar props de un componete Padre > hijo >...etc, pasar esta cantidad de props en cadena puede ser muy tedioso y dificil de trabajar si son muchos, posr lo que podemos crear una contexto para podes pasar estas porp desde cualquier lado donde se necesiten siempre y cuando nuestros componentes esten suscritos a nuensto contexto
+
+> Para ello primero creamos nuestro contexto con:
+
+```
+const claseContext= React createContext()
+```
+
+> Creamos una funcion llamada clase`Provider` la cual va a tener toda la logca de las props que necesitamos.
+> Ademas esta clase va a retornar a nuestra clase`Context`.`Provider`
+
+```
+...
+return (
+    <claseContext.Provider
+      value={{
+        props
+      }}
+    >
+      {children}
+    </*claseContext.Provider>
+  );
+...
+```
+
+> El atributo `value` va a tener un objeto con todas las props que vayamos a necesitar en nuestros componentes
+
+> Por ultimo, exportamos nuestros `claseContext` y nuestra funcion
+
+```
+export { claseProvider, claseContext };
+
+```
