@@ -47,7 +47,7 @@ const [state,setState]=React.useState(true)
 
 ### useEffect
 
-> Este se encarga de ejecutar un bloque de codigo una vez react finalize de realizar los calculos y justo antes de renderizar la aplicaion en el navegador.
+> Este se encarga de ejecutar un bloque de codigo una vez react finalize de realizar los calculos y justo antes de renderizar la aplicacion en el navegador.
 
 > En caso de que querramos cambiar este comportamiento useEffect contiene un segundo parametro tipo array `[]` el cual hace que el hook se ejecute si esta variable tiene algun cambio
 
@@ -88,3 +88,12 @@ return (
 export { claseProvider, claseContext };
 
 ```
+ ##  React.Portal
+> Nos permite crear nuevos nodos, ccon los cuales nos podemos comunicar como si fuera cualquier otro componente e incluso reaccionar a cambios de estados, esto es muy util cuando  deseamos crear  modales.
+
+> Para  ello vamos a crear un nuevo archivo en el cual mvamos a importar `react` y `react-dom`
+
+> Creamos un componente de funcion el cual va a retornar  a `ReactDOM.createPortal()`, este va  a  recibir dos parametros:
+El componente que quiero que se renderice, en este caso ara que sea reutilizable incluiremos a `props.children`y como segundo parametro vamos a enviar el nodo donde queremos que se renderice nuestro portal : `document.getElementById('modal')`
+
+> **Importante crear en  nuestro `public/index` la etiquete con el id del portal que amos a crear**
