@@ -6,12 +6,21 @@ import { TodoList } from "../../components/TodoList";
 import { TodoItem } from "../../components/TodoItem";
 import { CreateTodoButton } from "../../components/CreateTodoButton";
 import { TodoContext } from "../../context/TodoContext";
+import { Modal } from "../../components/Modal";
 function ListTodoUI() {
-  const { searchedTodos, error, loading, onComplete, onDelete } =useContext(TodoContext);
+  const {
+    searchedTodos,
+    error,
+    loading,
+    onComplete,
+    onDelete,
+    openModal,
+    setOpenModal,
+  } = useContext(TodoContext);
   return (
     <>
       <Title title="Todo List" />
-      <CreateTodoButton label="Add task" />
+      <CreateTodoButton label="Add task" setOpenModal={setOpenModal} />
       <TodoSearch
         id="searchInput"
         placeholder="Search to do..."
@@ -22,9 +31,7 @@ function ListTodoUI() {
       //todoCompleted={todoCompleted}
       //todoTotal={todoTotal}
       />
-      {error && (
-        <p className="text-red-600">{error.message}</p>
-      )}
+      {error && <p className="text-red-600">{error.message}</p>}
       {loading && (
         <p className="text-green-500">Estamos Cargando la informacion...</p>
       )}
@@ -47,6 +54,11 @@ function ListTodoUI() {
           />
         ))}
       </TodoList>
+      {!!openModal && (
+        <Modal>
+          <p className="text-red-900">{searchedTodos[0]?.text}</p>
+        </Modal>
+      )}
     </>
   );
 }

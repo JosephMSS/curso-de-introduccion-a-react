@@ -1,6 +1,6 @@
-function CreateTodoButton({ label }) {
+function CreateTodoButton({ label,setOpenModal }) {
   const onClickButton = () => {
-    alert("Crear un Nuevo Todo");
+    setOpenModal(true)
   };
   return (
     <>

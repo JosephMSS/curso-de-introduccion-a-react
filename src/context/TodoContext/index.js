@@ -26,6 +26,7 @@ const TodoProvider = ({ children }) => {
     },
   ];
   const [searchValue, setSearchValue] = useState("");
+  const [openModal, setOpenModal] = useState(false);
   const {
     error,
     item: todoList,
@@ -74,6 +75,8 @@ const TodoProvider = ({ children }) => {
         todoTotal,
         onComplete,
         onDelete,
+        openModal,
+        setOpenModal,
       }}
     >
       {children}
