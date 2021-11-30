@@ -7,6 +7,7 @@ import { TodoItem } from "../../components/TodoItem";
 import { CreateTodoButton } from "../../components/CreateTodoButton";
 import { TodoContext } from "../../context/TodoContext";
 import { Modal } from "../../components/Modal";
+import { CreateTodoUI } from "../../pages/CreateTodo/CreateTodoUI";
 function ListTodoUI() {
   const {
     searchedTodos,
@@ -56,7 +57,7 @@ function ListTodoUI() {
       </TodoList>
       {!!openModal && (
         <Modal>
-          <p className="text-red-900">{searchedTodos[0]?.text}</p>
+          <CreateTodoUI />
         </Modal>
       )}
     </>
