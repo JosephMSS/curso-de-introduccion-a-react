@@ -1,4 +1,5 @@
 import { Title } from "../../components/Title";
+import { Button } from "../../components/Button";
 function CreateTodoUI() {
   return (
     <>
@@ -40,28 +41,8 @@ function CreateTodoUI() {
           ></textarea>
         </div>
         <div className="flex justify-around m-3">
-          <input
-            type="button"
-            value="Discart"
-            className="
-            bg-white text-secondary 
-            rounded-xl
-            p-3 shadow-2xl
-            font-poppins
-            font-bold
-            tracking-wider"
-          />
-          <input
-            type="button"
-            value="Save"
-            className="
-            bg-secondary text-white
-            rounded-xl
-            p-3 shadow-2xl
-            font-poppins
-            font-bold
-            tracking-wider"
-          />
+          <Button textColor="secondary" label="Discard" bgColor="white" />
+          <Button textColor="white" label="Create" bgColor="secondary" />
         </div>
       </div>
     </>
