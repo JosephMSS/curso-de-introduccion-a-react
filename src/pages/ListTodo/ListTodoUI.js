@@ -25,13 +25,8 @@ function ListTodoUI() {
       <TodoSearch
         id="searchInput"
         placeholder="Search to do..."
-        //searchValue={searchValue}
-        //setSearchValue={setSearchValue}
       />
-      <TodoCounter
-      //todoCompleted={todoCompleted}
-      //todoTotal={todoTotal}
-      />
+      <TodoCounter/>
       {error && <p className="text-red-600">{error.message}</p>}
       {loading && (
         <p className="text-green-500">Estamos Cargando la informacion...</p>

@@ -1,10 +1,10 @@
 import React from "react";
-function Button({ textColor, label, bgColor }) {
+function Button({ type, textColor, label, bgColor, onClickButton }) {
   return (
     <>
-      <input
-        type="button"
-        value={label}
+      <button
+        onClick={onClickButton}
+        type={type}
         className={`
             bg-${bgColor} text-${textColor} 
             rounded-xl
@@ -12,7 +12,9 @@ function Button({ textColor, label, bgColor }) {
             font-poppins
             font-bold
             tracking-wider`}
-      />
+      >
+        {label}
+      </button>
     </>
   );
 }

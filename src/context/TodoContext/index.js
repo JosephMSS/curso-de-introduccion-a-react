@@ -1,5 +1,6 @@
 import { useState, createContext } from "react";
 import { useLocalStorage } from "./useLocalStorage";
+import uuid from "react-uuid";
 
 const TodoContext = createContext();
 const TodoProvider = ({ children }) => {
@@ -55,6 +56,16 @@ const TodoProvider = ({ children }) => {
       setTodoList(newTodoList);
     }
   };
+  const onCreate = (text, title) => {
+    let newTodoList = [...todoList];
+    newTodoList.push({
+      id: uuid(),
+      text,
+      title,
+      completed: false,
+    });
+    setTodoList(newTodoList);
+  };
   const onDelete = (id) => {
     const index = todoList.findIndex((todo) => todo.id === id);
     if (index !== -1) {
@@ -77,6 +88,7 @@ const TodoProvider = ({ children }) => {
         onDelete,
         openModal,
         setOpenModal,
+        onCreate,
       }}
     >
       {children}
