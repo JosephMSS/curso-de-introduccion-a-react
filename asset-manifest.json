@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/curso-de-introduccion-a-react/static/css/main.88a8f356.chunk.css",
-    "main.js": "/curso-de-introduccion-a-react/static/js/main.9b90f017.chunk.js",
-    "main.js.map": "/curso-de-introduccion-a-react/static/js/main.9b90f017.chunk.js.map",
+    "main.css": "/curso-de-introduccion-a-react/static/css/main.477d4808.chunk.css",
+    "main.js": "/curso-de-introduccion-a-react/static/js/main.c5a424ef.chunk.js",
+    "main.js.map": "/curso-de-introduccion-a-react/static/js/main.c5a424ef.chunk.js.map",
     "runtime-main.js": "/curso-de-introduccion-a-react/static/js/runtime-main.a78d8c2b.js",
     "runtime-main.js.map": "/curso-de-introduccion-a-react/static/js/runtime-main.a78d8c2b.js.map",
     "static/js/2.5c1e656c.chunk.js": "/curso-de-introduccion-a-react/static/js/2.5c1e656c.chunk.js",
     "static/js/2.5c1e656c.chunk.js.map": "/curso-de-introduccion-a-react/static/js/2.5c1e656c.chunk.js.map",
     "index.html": "/curso-de-introduccion-a-react/index.html",
-    "static/css/main.88a8f356.chunk.css.map": "/curso-de-introduccion-a-react/static/css/main.88a8f356.chunk.css.map",
+    "static/css/main.477d4808.chunk.css.map": "/curso-de-introduccion-a-react/static/css/main.477d4808.chunk.css.map",
     "static/js/2.5c1e656c.chunk.js.LICENSE.txt": "/curso-de-introduccion-a-react/static/js/2.5c1e656c.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.a78d8c2b.js",
     "static/js/2.5c1e656c.chunk.js",
-    "static/css/main.88a8f356.chunk.css",
-    "static/js/main.9b90f017.chunk.js"
+    "static/css/main.477d4808.chunk.css",
+    "static/js/main.c5a424ef.chunk.js"
   ]
 }
